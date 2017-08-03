@@ -1,0 +1,15 @@
+.container2
+{
+    position:absolute;
+    width:400px;
+    height:400px;
+    left:50%;
+    top:50%;
+    margin-left:-50px;
+    margin-top:-50px;
+}
+.answer
+{
+position:absolute;
+ width:25%;
+}

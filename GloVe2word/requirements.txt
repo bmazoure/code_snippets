@@ -1,0 +1,6 @@
+Flask
+gunicorn
+numpy
+sklearn
+lark-parser
+scipy

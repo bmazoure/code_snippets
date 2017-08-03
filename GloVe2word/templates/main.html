@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GloVe2word</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link href="{{ url_for('static', filename='scripts/dist/css/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+ <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/flat-ui.css') }}">
+ <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/custom_style.css') }}">
+</head>
+<body>
+<div class="container2">
+<h1 class="demo-section-title">Input</h1>
+<div class="col-xs-3">
+ <input type="text" value="" placeholder="Ex: Paris-France+Italy " class="form-control" id="search_form_input"/>
+</div>
+<div class="answer">
+	<div id="place_for_suggestions"></div>
+</div>
+	<br>
+<h3 class="demo-panel-title">(Ex: Paris-France+Italy)</h3>
+</div>   
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script>
+$("#search_form_input").keyup(function(){
+    var text = $(this).val();
+
+    $.ajax({
+      url: "/suggestions",
+      type: "get",
+      data: {jsdata: text},
+      success: function(response) {
+        $("#place_for_suggestions").html(response);
+      },
+      error: function(xhr) {
+        //Do Something to handle error
+      }
+    });
+});
+</script>
+</body>
+</html>
