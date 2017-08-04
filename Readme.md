@@ -34,8 +34,9 @@ The images labeled as 0 are considered the true positives and should be added to
 
 ### Examples
 
-| Metrics | Conserved | Discarded |
-|---------|-----------|-----------|
-|Euclidean|  <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_putin_good_euclidean.jpg"></img>         |    <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_putin_bad_euclidean.jpg"></img>       |
-|Euclidean|  <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_dog_good_euclidean.jpg"></img>         |    <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_dog_bad_euclidean.jpg"></img>       |
-|Cosine|  <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_dog_good_cosine.jpg"></img>         |    <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_dog_bad_cosine.jpg"></img>       |
+| Query | Metrics | Conserved | Discarded |
+|-------|---------|-----------|-----------|
+| putin |Euclidean|  <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_putin_good_euclidean.jpg"></img>         |    <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_putin_bad_euclidean.jpg"></img>       |
+| dog   |Euclidean|  <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_dog_good_euclidean.jpg"></img>         |    <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_dog_bad_euclidean.jpg"></img>       |
+| dog   |Cosine|  <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_dog_good_cosine.jpg"></img>         |    <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_dog_bad_cosine.jpg"></img>       |
+| metro |Cosine|  <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_dog_good_cosine.jpg"></img>         |    <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_dog_bad_cosine.jpg"></img>       |

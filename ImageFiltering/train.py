@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import DBSCAN
 from getImages import getImages
 # In[]
-query='dog'
+query='metro'
 max_its=200
 print("Downloading images")
 #getImages(query=query,max_its=max_its)
@@ -46,7 +46,7 @@ features = features[:,0,0,:]
 
 # In[]
 metric='cosine'
-labels = DBSCAN(eps=0.47, min_samples=10,algorithm='brute',metric=metric).fit(features).labels_
+labels = DBSCAN(eps=0.45, min_samples=10,algorithm='brute',metric=metric).fit(features).labels_
 X_new=X_raw[labels==0]
 X_bad=X_raw[labels!=0]
 def gallery(array, ncols=13):
@@ -58,11 +58,11 @@ def gallery(array, ncols=13):
               .swapaxes(1,2)
               .reshape((height*nrows, width*ncols, intensity)))
     return result
-result = gallery(X_new[:48],ncols=12)
+result = gallery(X_new[:],ncols=10)
 fig=plt.imshow(result)
 plt.imsave("../media/ImageFiltering_"+query+"_good_"+metric+".jpg",result)
 plt.show()
-result = gallery(X_bad[:18],ncols=9)
+result = gallery(X_bad[:170],ncols=17)
 plt.imshow(result)
 plt.imsave("../media/ImageFiltering_"+query+"_bad_"+metric+".jpg",result)
 plt.show()
