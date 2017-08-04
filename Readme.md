@@ -3,7 +3,7 @@
 
 List of useful projects currently being worked on:
 
-* [GloVe2word] - Flask app (deployable on Heroku) which allows to evaluate mathematical expressions with words using their respective GloVe encodings (Pennington *et al.* 2014)
+## [GloVe2word] - Flask app (deployable on Heroku) which allows to evaluate mathematical expressions with words using their respective GloVe encodings (Pennington *et al.* 2014)
 
 | nearest neighbors of <br/> <em>frog</em> | Litoria             |  Leptodactylidae | Rana | Eleutherodactylus |
 | --- | ------------------------------- | ------------------- | ---------------- | ------------------- |
@@ -18,7 +18,11 @@ List of useful projects currently being worked on:
 It should give something like this:
 <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/GloVe2word.PNG"></img>
 3. [*Optional*] Deploy to Heroku: ```heroku create```, ```git add .```, ```git commit -m "init"``` and ```git push heroku master```.
-* [Google Image Filtering] - Using clustering techniques and transfer learning, filter noisy images from Google Image search. This technique would allow researchers to automatically construct large datasets with minimal false positive counts.
 
+## [Search Image Filtering] - Using clustering techniques and transfer learning, filter noisy images from Bing Image search. This technique would allow researchers to automatically construct large datasets with minimal false positive counts.
 
+After a PCA transformation to 2 dimensions from 2048:
+<img src=""></img>
 
+We now apply *dbscan* with $\varepsilon=0.01$ and *min_samples=5$, obtaining a reduced gaussian-like shape:
+<img scr=""></img>
