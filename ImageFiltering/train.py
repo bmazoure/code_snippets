@@ -12,7 +12,7 @@ from getImages import getImages
 query='dog'
 max_its=200
 print("Downloading images")
-getImages(query=query,max_its=max_its)
+#getImages(query=query,max_its=max_its)
 print("done")
 
 # In[]
@@ -45,7 +45,8 @@ features = features[:,0,0,:]
 #plt.show()
 
 # In[]
-labels = DBSCAN(eps=32, min_samples=10).fit(features).labels_
+metric='cosine'
+labels = DBSCAN(eps=0.47, min_samples=10,algorithm='brute',metric=metric).fit(features).labels_
 X_new=X_raw[labels==0]
 X_bad=X_raw[labels!=0]
 def gallery(array, ncols=13):
@@ -57,13 +58,11 @@ def gallery(array, ncols=13):
               .swapaxes(1,2)
               .reshape((height*nrows, width*ncols, intensity)))
     return result
-result = gallery(X_new[:42],ncols=14)
+result = gallery(X_new[:48],ncols=12)
 fig=plt.imshow(result)
-plt.imsave("../media/ImageFiltering_"+query+"_good.jpg",result)
+plt.imsave("../media/ImageFiltering_"+query+"_good"+metric+".jpg",result)
 plt.show()
-result = gallery(X_bad[:],ncols=12)
+result = gallery(X_bad[:18],ncols=9)
 plt.imshow(result)
-plt.imsave("../media/ImageFiltering_"+query+"_bad.jpg",result)
+plt.imsave("../media/ImageFiltering_"+query+"_bad"+metric+".jpg",result)
 plt.show()
-
-print(sum(db))
