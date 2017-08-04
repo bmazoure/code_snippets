@@ -31,3 +31,9 @@ We now apply *dbscan* with &#949;=0.01 and *min_samples=5*, obtaining a reduced 
 <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_2.png"></img>
 
 The images labeled as 0 are considered the true positives and should be added to the real training set. The remaining images (labeled with -1, which stands for *no cluster*) can be dismissed.
+
+### Examples
+
+| Conserved | Discarded |
+|-----------|-----------|
+|  <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_putin_good.jpg"></img>         |    <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_putin_bad.jpg"></img>       |
