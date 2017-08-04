@@ -13,7 +13,11 @@ List of useful projects currently being worked on:
 | --- | ------------------------|-------------------------|-------------------------|
 | GloVe Geometry | <img src="http://nlp.stanford.edu/projects/glove/images/man_woman_small.jpg"></img>  | <img src="http://nlp.stanford.edu/projects/glove/images/city_zip_small.jpg"></img> | <img src="http://nlp.stanford.edu/projects/glove/images/comparative_superlative_small.jpg"></img> |
 
-Download the embedding vectors```wget http://nlp.stanford.edu/data/wordvecs/glove.6B.zip & unzip glove.6B.zip``` and put them in the ```embeddings``` directory.
+1. Download the embedding vectors```wget http://nlp.stanford.edu/data/wordvecs/glove.6B.zip & unzip glove.6B.zip``` and put them in the ```./embeddings``` directory.
+2. Try it out locally by running ```python app.py```, then go on *localhost:5000*.
+It should give something like this:
+<img src="./media/GloVe2word.png"></img>
+3. [*Optional*] Deploy to Heroku: ```heroku create```, ```git add .```, ```git commit -m "init"``` and ```git push heroku master```.
 * [Google Image Filtering] - Using clustering techniques and transfer learning, filter noisy images from Google Image search. This technique would allow researchers to automatically construct large datasets with minimal false positive counts.
 
 
