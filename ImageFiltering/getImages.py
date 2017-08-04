@@ -3,11 +3,9 @@ import os, sys, urllib.request, re, threading, posixpath, urllib.parse, argparse
 
 #config
 output_dir = './bing' #default output dir
-adult_filter = True #Do not disable adult filter by default
 pool_sema = threading.BoundedSemaphore(value = 20) #max number of download threads
 bingcount = 35 #default bing paging
 socket.setdefaulttimeout(2)
-MAX=200
 
 in_progress = tried_urls = []
 image_md5s = {}
@@ -52,13 +50,13 @@ def download(url,output_dir):
 		in_progress.remove(filename)
 		pool_sema.release()
 
-def fetch_images_from_keyword(keyword,output_dir):
+def fetch_images_from_keyword(keyword,output_dir,max_its):
 	current = 1
 	last = ''
 	while True:
-		if current>MAX:
+		if current>max_its:
 			break
-		request_url='https://www.bing.com/images/async?q=' + urllib.parse.quote_plus(keyword) + '&async=content&first=' + str(current) + '&adlt=' + adlt
+		request_url='https://www.bing.com/images/async?q=' + urllib.parse.quote_plus(keyword) + '&async=content&first=' + str(current) + '&adlt=off'
 		request=urllib.request.Request(request_url,None,headers=urlopenheader)
 		response=urllib.request.urlopen(request)
 		html = response.read().decode('utf8')
@@ -86,18 +84,7 @@ def backup_history(*args):
 	if args:
 		exit(0)
 	
-if __name__ == "__main__":
-	parser = argparse.ArgumentParser(description = 'Bing image bulk downloader')
-	parser.add_argument('-s', '--search-string', help = 'Keyword to search', required = False)
-	parser.add_argument('-f', '--search-file', help = 'Path to a file containing search strings line by line', required = False)
-	parser.add_argument('-o', '--output', help = 'Output directory', required = False)
-	parser.add_argument('--filter', help ='Enable adult filter', action = 'store_true', required = False)
-	parser.add_argument('--no-filter', help = 'Disable adult filter', action = 'store_true', required = False)
-	args = parser.parse_args()
-	if (not args.search_string) and (not args.search_file):
-		parser.error('Provide Either search string or path to file containing search strings')
-	if args.output:
-		output_dir = args.output
+def getImages(query='dog',max_its=200):
 	if not os.path.exists(output_dir):
 		os.makedirs(output_dir)
 	output_dir_origin = output_dir
@@ -109,26 +96,5 @@ if __name__ == "__main__":
 		download_history.close()
 	except (OSError, IOError):
 		tried_urls=[]
-	if adult_filter:
-		adlt = ''
-	else:
-		adlt = 'off'
-	if args.no_filter:
-		adlt = 'off'
-	elif args.filter:
-		adlt = ''
-	if args.search_string:
-		fetch_images_from_keyword(args.search_string,output_dir)
-	elif args.search_file:
-		try:
-			inputFile=open(args.search_file)
-		except (OSError, IOError):
-			print("Couldn't open file {}".format(args.search_file))
-			exit(1)
-		for keyword in inputFile.readlines():
-			output_sub_dir = os.path.join(output_dir_origin, keyword.strip().replace(' ', '_'))
-			if not os.path.exists(output_sub_dir):
-				os.makedirs(output_sub_dir)
-			fetch_images_from_keyword(keyword,output_sub_dir)
-			backup_history()
-		inputFile.close()
+	if query:
+		fetch_images_from_keyword(query,output_dir,max_its=max_its)

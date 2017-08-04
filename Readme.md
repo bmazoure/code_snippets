@@ -37,3 +37,4 @@ The images labeled as 0 are considered the true positives and should be added to
 | Conserved | Discarded |
 |-----------|-----------|
 |  <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_putin_good.jpg"></img>         |    <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_putin_bad.jpg"></img>       |
+|  <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_dog_good.jpg"></img>         |    <img src="https://raw.githubusercontent.com/ArtificialBreeze/MachineLearning/master/media/ImageFiltering_dog_bad.jpg"></img>       |

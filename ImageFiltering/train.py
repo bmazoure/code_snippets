@@ -7,8 +7,15 @@ from os.path import isfile, join
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 from sklearn.cluster import DBSCAN
+from getImages import getImages
+# In[]
+query='dog'
+max_its=200
+print("Downloading images")
+getImages(query=query,max_its=max_its)
+print("done")
 
-
+# In[]
 model = ResNet50(weights='imagenet', include_top=False)
 
 img_dir="bing"
@@ -27,18 +34,18 @@ features = model.predict(X_train)
 
 features = features[:,0,0,:]
 
-linfit = PCA(n_components=2)
-linfeatures=linfit.fit_transform(features)
+#linfit = PCA(n_components=2)
+#linfeatures=linfit.fit_transform(features)
 
 # In[]
-db = DBSCAN(eps=0.01, min_samples=10).fit(linfeatures).labels_
-plt.plot(linfeatures[db!=-1,0], linfeatures[db!=-1,1],'ro')
-plt.plot(linfeatures[db==-1,0], linfeatures[db==-1,1],'ko')
+#db = DBSCAN(eps=0.01, min_samples=10).fit(linfeatures).labels_
+#plt.plot(linfeatures[db!=-1,0], linfeatures[db!=-1,1],'ro')
+#plt.plot(linfeatures[db==-1,0], linfeatures[db==-1,1],'ko')
 #plt.plot(linfeatures[0], linfeatures[1],'ko')
-plt.show()
+#plt.show()
 
 # In[]
-labels = DBSCAN(eps=20, min_samples=10).fit(features).labels_
+labels = DBSCAN(eps=32, min_samples=10).fit(features).labels_
 X_new=X_raw[labels==0]
 X_bad=X_raw[labels!=0]
 def gallery(array, ncols=13):
@@ -50,13 +57,13 @@ def gallery(array, ncols=13):
               .swapaxes(1,2)
               .reshape((height*nrows, width*ncols, intensity)))
     return result
-result = gallery(X_new[:52])
+result = gallery(X_new[:42],ncols=14)
 fig=plt.imshow(result)
-plt.imsave("../media/ImageFiltering_putin_good.jpg",result)
+plt.imsave("../media/ImageFiltering_"+query+"_good.jpg",result)
 plt.show()
-result = gallery(X_bad)
+result = gallery(X_bad[:],ncols=12)
 plt.imshow(result)
-plt.imsave("../media/ImageFiltering_putin_bad.jpg",result)
+plt.imsave("../media/ImageFiltering_"+query+"_bad.jpg",result)
 plt.show()
 
 print(sum(db))
