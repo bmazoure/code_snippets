@@ -26,13 +26,11 @@ features = model.predict(X_train)
 features = features[:,0,0,:]
 
 linfit = PCA(n_components=2)
-linfit.fit(features)
-
-linfeatures=linfit.components_
+linfeatures=linfit.fit_transform(features)
 
 # In[]
-db = DBSCAN(eps=0.01, min_samples=10).fit(np.transpose(linfeatures)).labels_
-plt.plot(linfeatures[0,db!=-1], linfeatures[1,db!=-1],'ro')
-plt.plot(linfeatures[0,db==-1], linfeatures[1,db==-1],'ko')
-#plt.plot(linfeatures[0], linfeatures[1],'ko')
+db = DBSCAN(eps=0.01, min_samples=10).fit(linfeatures).labels_
+plt.plot(linfeatures[db!=-1,0], linfeatures[db!=-1,1],'ro')
+plt.plot(linfeatures[db==-1,0], linfeatures[db==-1,1],'ko')
+plt.plot(linfeatures[0], linfeatures[1],'ko')
 plt.show()
