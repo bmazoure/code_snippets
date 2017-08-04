@@ -60,9 +60,9 @@ def gallery(array, ncols=13):
     return result
 result = gallery(X_new[:48],ncols=12)
 fig=plt.imshow(result)
-plt.imsave("../media/ImageFiltering_"+query+"_good"+metric+".jpg",result)
+plt.imsave("../media/ImageFiltering_"+query+"_good_"+metric+".jpg",result)
 plt.show()
 result = gallery(X_bad[:18],ncols=9)
 plt.imshow(result)
-plt.imsave("../media/ImageFiltering_"+query+"_bad"+metric+".jpg",result)
+plt.imsave("../media/ImageFiltering_"+query+"_bad_"+metric+".jpg",result)
 plt.show()
