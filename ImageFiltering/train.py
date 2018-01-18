@@ -9,11 +9,14 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import DBSCAN
 from getImages import getImages
 # In[]
-query='vladimir'
+query='apple'
 max_its=200
-print("Downloading images")
-getImages(query=query,max_its=max_its)
-print("done")
+download_images = False
+
+if download_images:
+    print("Downloading images")
+    getImages(query=query,max_its=max_its)
+    print("done")
 
 # In[]
 model = ResNet50(weights='imagenet', include_top=False)
