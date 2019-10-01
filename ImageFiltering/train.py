@@ -1,3 +1,4 @@
+# In[]
 from keras.applications.resnet50 import ResNet50
 from keras.preprocessing import image
 from keras.applications.vgg16 import preprocess_input
@@ -10,8 +11,8 @@ from sklearn.cluster import DBSCAN
 from getImages import getImages
 # In[]
 query='apple'
-max_its=200
-download_images = False
+max_its=10
+download_images = True
 
 if download_images:
     print("Downloading images")
@@ -49,7 +50,7 @@ features = features[:,0,0,:]
 
 # In[]
 metric='cosine'
-labels = DBSCAN(eps=0.19, min_samples=10,algorithm='brute',metric=metric).fit(features).labels_
+labels = DBSCAN(eps=0.3, min_samples=10,algorithm='brute',metric=metric).fit(features).labels_
 X_new=X_raw[labels==0]
 X_bad=X_raw[labels!=0]
 def gallery(array, ncols=13):
@@ -61,11 +62,14 @@ def gallery(array, ncols=13):
               .swapaxes(1,2)
               .reshape((height*nrows, width*ncols, intensity)))
     return result
-result = gallery(X_new[:64],ncols=16)
+print(X_new.shape)
+print(X_bad.shape)
+result = gallery(X_new[:15],ncols=5)
+print(result)
 fig=plt.imshow(result)
 plt.imsave("../media/ImageFiltering_"+query+"_good_"+metric+".jpg",result)
 plt.show()
-result = gallery(X_bad[:100],ncols=10)
+result = gallery(X_bad[:15],ncols=5)
 plt.imshow(result)
 plt.imsave("../media/ImageFiltering_"+query+"_bad_"+metric+".jpg",result)
 plt.show()

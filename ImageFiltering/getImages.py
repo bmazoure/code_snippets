@@ -98,3 +98,10 @@ def getImages(query='dog',max_its=200):
 		tried_urls=[]
 	if query:
 		fetch_images_from_keyword(query,output_dir,max_its=max_its)
+
+if __name__ == '__main__':
+	parser = argparse.ArgumentParser()
+	parser.add_argument('--query', type=str)
+	parser.add_argument('--max_pages', type=int)
+	args = parser.parse_args()
+	getImages(query=args.query,max_its=args.max_pages)
