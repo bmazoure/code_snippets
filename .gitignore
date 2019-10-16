@@ -1,4 +1,5 @@
-ImageFiltering/bing/*
+Image_filtering/bing/*
 .DS_Store
 ImageFiltering/.DS_Store
 ImageFiltering/__pycache__/getImages.cpython-36.pyc
+ipynb_checkpoints
